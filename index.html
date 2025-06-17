@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karl Jaspers - Filósofo de la Existencia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><radialGradient id="grad1" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:%23667eea;stop-opacity:1" /><stop offset="100%" style="stop-color:%23764ba2;stop-opacity:1" /></radialGradient></defs><rect width="1200" height="800" fill="url(%23grad1)"/><circle cx="200" cy="150" r="3" fill="rgba(255,255,255,0.3)" opacity="0"><animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/></circle><circle cx="800" cy="300" r="2" fill="rgba(255,255,255,0.4)" opacity="0"><animate attributeName="opacity" values="0;1;0" dur="4s" repeatCount="indefinite" begin="1s"/></circle><circle cx="400" cy="600" r="4" fill="rgba(255,255,255,0.2)" opacity="0"><animate attributeName="opacity" values="0;1;0" dur="5s" repeatCount="indefinite" begin="2s"/></circle></svg>');
+            background-size: cover;
+            position: relative;
+        }
+
+        .hero-content {
+            color: white;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .hero-dates {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+            background: white;
+            margin: 20px 0;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 5px;
+                background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+                background-size: 200% 100%;
+                animation: shimmer 3s ease-in-out infinite;
+            }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #2c3e50;
+            position: relative;
+        }
+
+            .section-title::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100px;
+                height: 3px;
+                background: linear-gradient(90deg, #667eea, #764ba2);
+                border-radius: 2px;
+            }
+
+        .quote-box {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-left: 5px solid #667eea;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+            .quote-box:hover {
+                transform: translateY(-5px);
+            }
+
+            .quote-box::before {
+                content: '"';
+                font-size: 4rem;
+                color: #667eea;
+                position: absolute;
+                top: -10px;
+                left: 15px;
+                font-family: 'Times New Roman', serif;
+            }
+
+        .quote-text {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            padding-left: 40px;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+            .timeline::before {
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 0;
+                bottom: 0;
+                width: 4px;
+                background: linear-gradient(to bottom, #667eea, #764ba2);
+                transform: translateX(-50%);
+            }
+
+        .timeline-item {
+            margin: 40px 0;
+            position: relative;
+        }
+
+            .timeline-item:nth-child(odd) .timeline-content {
+                margin-right: 55%;
+                text-align: right;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 55%;
+            }
+
+        .timeline-content {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+            .timeline-content:hover {
+                transform: scale(1.05);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            }
+
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .work-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .work-card::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+                transform: rotate(45deg);
+                transition: all 0.6s ease;
+                opacity: 0;
+            }
+
+            .work-card:hover::before {
+                animation: shine 0.6s ease-in-out;
+            }
+
+            .work-card:hover {
+                transform: translateY(-10px) scale(1.02);
+            }
+
+        .work-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .work-year {
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+
+        .work-links {
+            margin-top: 20px;
+        }
+
+            .work-links a {
+                display: inline-block;
+                background: rgba(255,255,255,0.2);
+                color: white;
+                padding: 8px 16px;
+                margin: 5px 5px 5px 0;
+                border-radius: 20px;
+                text-decoration: none;
+                font-size: 0.9rem;
+                transition: all 0.3s ease;
+                border: 1px solid rgba(255,255,255,0.3);
+            }
+
+                .work-links a:hover {
+                    background: rgba(255,255,255,0.3);
+                    transform: scale(1.05);
+                }
+
+        .influences-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .influence-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .influence-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+                transition: left 0.5s ease;
+            }
+
+            .influence-card:hover::before {
+                left: 100%;
+            }
+
+            .influence-card:hover {
+                border-color: #667eea;
+                transform: translateY(-5px);
+                box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+            }
+
+        .influence-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .influence-description {
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+
+        .nav-menu {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+            .nav-menu ul {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-menu a {
+                text-decoration: none;
+                color: #2c3e50;
+                padding: 8px 15px;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+                font-weight: 500;
+            }
+
+                .nav-menu a:hover {
+                    background: #667eea;
+                    color: white;
+                    transform: translateX(5px);
+                }
+
+        .references-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+            .references-list li {
+                background: #f8f9fa;
+                margin: 15px 0;
+                padding: 20px;
+                border-radius: 10px;
+                border-left: 4px solid #667eea;
+                transition: all 0.3s ease;
+            }
+
+                .references-list li:hover {
+                    background: #e9ecef;
+                    transform: translateX(10px);
+                }
+
+            .references-list a {
+                color: #667eea;
+                text-decoration: none;
+                font-weight: 500;
+            }
+
+                .references-list a:hover {
+                    text-decoration: underline;
+                }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(102, 126, 234, 0.2);
+            z-index: 1001;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item .timeline-content {
+                margin-left: 60px;
+                margin-right: 0;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 20px;
+                transform: translateX(-50%);
+            }
+
+            .nav-menu {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin: 20px;
+            }
+
+                .nav-menu ul {
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="#biografia">Biografía</a></li>
+            <li><a href="#pensamiento">Pensamiento</a></li>
+            <li><a href="#obras">Obras</a></li>
+            <li><a href="#influencias">Influencias</a></li>
+            <li><a href="#teologia">Teología</a></li>
+            <li><a href="#referencias">Referencias</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Karl Jaspers</h1>
+            <p>"El filósofo de la existencia y la comunicación"</p>
+            <div class="hero-dates">1883 - 1969</div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="biografia" class="section">
+            <h2 class="section-title">Biografía</h2>
+
+            <div class="quote-box">
+                <div class="quote-text">"La filosofía debe ayudar al hombre a vivir, no meramente a pensar."</div>
+                <div class="quote-author">— Karl Jaspers</div>
+            </div>
+
+            <p>Karl Theodor Jaspers (1883-1969) fue un psiquiatra y filósofo alemán, considerado uno de los fundadores del existencialismo junto con Søren Kierkegaard y Martin Heidegger. Nacido en Oldenburg, Alemania, Jaspers desarrolló una filosofía centrada en la existencia humana, la comunicación y la búsqueda de la trascendencia.</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1883</div>
+                        <h3>Nacimiento en Oldenburg</h3>
+                        <p>Nace en una familia próspera. Su padre era banquero y su madre provenía de una familia de comerciantes.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1901-1908</div>
+                        <h3>Estudios universitarios</h3>
+                        <p>Estudia derecho, medicina y filosofía en las universidades de Friburgo, Múnich y Gotinga. Se doctora en medicina.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1913</div>
+                        <h3>Psicopatología general</h3>
+                        <p>Publica su obra fundamental en psiquiatría, que revoluciona el campo y establece su reputación académica.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1919</div>
+                        <h3>Transición a la filosofía</h3>
+                        <p>Publica "Psicología de las concepciones del mundo", marcando su transición de la psiquiatría a la filosofía.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1932</div>
+                        <h3>Filosofía de la existencia</h3>
+                        <p>Publica su obra magna, estableciendo los fundamentos de su filosofía existencial.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1933-1945</div>
+                        <h3>Período nazi</h3>
+                        <p>Es prohibido de enseñar por el régimen nazi debido a su esposa judía. Vive en aislamiento intelectual.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1948</div>
+                        <h3>Traslado a Suiza</h3>
+                        <p>Se muda a Basilea, donde continúa su labor filosófica y se convierte en ciudadano suizo.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1969</div>
+                        <h3>Muerte en Basilea</h3>
+                        <p>Muere en Basilea, Suiza, dejando un legado filosófico fundamental para el existencialismo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pensamiento" class="section">
+            <h2 class="section-title">Pensamiento Filosófico</h2>
+
+            <div class="quote-box">
+                <div class="quote-text">"El hombre no es lo que es, sino lo que hace de sí mismo."</div>
+                <div class="quote-author">— Karl Jaspers</div>
+            </div>
+
+            <h3>Las Situaciones Límite</h3>
+            <p>Jaspers desarrolló el concepto de "situaciones límite" (Grenzsituationen), momentos de crisis existencial que nos confrontan con la realidad fundamental de nuestra existencia: la muerte, el sufrimiento, la culpa y la lucha. Estas situaciones nos despiertan de la cotidianidad y nos abren a la auténtica existencia.</p>
+
+            <div class="quote-box">
+                <div class="quote-text">"En las situaciones límite, el hombre se enfrenta a sí mismo y a su destino de manera más auténtica."</div>
+                <div class="quote-author">— Filosofía de la Existencia</div>
+            </div>
+
+            <h3>La Comunicación Existencial</h3>
+            <p>Para Jaspers, la comunicación auténtica es fundamental para la realización humana. No se trata de mero intercambio de información, sino de un encuentro profundo entre existencias que se reconocen mutuamente en su libertad y autenticidad.</p>
+
+            <h3>Lo Envolvente (Das Umgreifende)</h3>
+            <p>Jaspers concibe la realidad como "lo envolvente", una totalidad que trasciende tanto al sujeto como al objeto del conocimiento. Es el horizonte último e inconceptualizable de toda experiencia posible.</p>
+
+            <div class="quote-box">
+                <div class="quote-text">"Lo envolvente es aquello que siempre se anuncia pero nunca se convierte en objeto."</div>
+                <div class="quote-author">— De la Verdad</div>
+            </div>
+
+            <h3>La Cifra de la Trascendencia</h3>
+            <p>La trascendencia no puede ser conocida directamente, sino solo através de "cifras" o símbolos que la hacen presente sin agotarla. El arte, la religión y la filosofía son formas de acceso a estas cifras.</p>
+        </section>
+
+        <section id="obras" class="section">
+            <h2 class="section-title">Principales Obras</h2>
+
+            <div class="works-grid">
+                <div class="work-card">
+                    <div class="work-title">Psicopatología general</div>
+                    <div class="work-year">1913</div>
+                    <p>Su obra fundamental en psiquiatría que estableció nuevos métodos para el estudio de las enfermedades mentales.</p>
+                    <div class="work-links">
+                        <a href="https://archive.org/search.php?query=jaspers+psicopatologia" target="_blank">Archive.org</a>
+                        <a href="https://www.amazon.es/s?k=jaspers+psicopatologia+general" target="_blank">Amazon</a>
+                    </div>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-title">Psicología de las concepciones del mundo</div>
+                    <div class="work-year">1919</div>
+                    <p>Obra de transición hacia la filosofía, donde examina diferentes visiones del mundo y sus bases psicológicas.</p>
+                    <div class="work-links">
+                        <a href="https://www.amazon.es/s?k=jaspers+psicologia+concepciones+mundo" target="_blank">Amazon</a>
+                    </div>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-title">Filosofía</div>
+                    <div class="work-year">1932</div>
+                    <p>Su obra magna en tres volúmenes: Orientación filosófica del mundo, Esclarecimiento de la existencia, y Metafísica.</p>
+                    <div class="work-links">
+                        <a href="https://www.amazon.es/s?k=jaspers+filosofia+existencia" target="_blank">Amazon</a>
+                        <a href="https://archive.org/search.php?query=jaspers+philosophy" target="_blank">Archive.org</a>
+                    </div>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-title">La fe filosófica</div>
+                    <div class="work-year">1948</div>
+                    <p>Exploración de la relación entre filosofía y religión, defendiendo una fe racional no dogmática.</p>
+                    <div class="work-links">
+                        <a href="https://www.amazon.es/s?k=jaspers+fe+filosofica" target="_blank">Amazon</a>
+                    </div>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-title">Origen y meta de la historia</div>
+                    <div class="work-year">1949</div>
+                    <p>Análisis filosófico de la historia universal y el concepto de "tiempo-eje" en el desarrollo humano.</p>
+                    <div class="work-links">
+                        <a href="https://www.amazon.es/s?k=jaspers+origen+meta+historia" target="_blank">Amazon</a>
+                        <a href="https://archive.org/search.php?query=jaspers+origin+goal+history" target="_blank">Archive.org</a>
+                    </div>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-title">De la verdad</div>
+                    <div class="work-year">1947</div>
+                    <p>Investigación sobre la naturaleza de la verdad y sus diferentes modalidades de manifestación.</p>
+                    <div class="work-links">
+                        <a href="https://www.amazon.es/s?k=jaspers+verdad" target="_blank">Amazon</a>
+                    </div>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-title">Introducción a la filosofía</div>
+                    <div class="work-year">1950</div>
+                    <p>Obra divulgativa que presenta los conceptos fundamentales de su pensamiento filosófico.</p>
+                    <div class="work-links">
+                        <a href="https://www.amazon.es/s?k=jaspers+introduccion+filosofia" target="_blank">Amazon</a>
+                        <a href="https://archive.org/search.php?query=jaspers+introduction+philosophy" target="_blank">Archive.org</a>
+                    </div>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-title">La bomba atómica y el futuro del hombre</div>
+                    <div class="work-year">1958</div>
+                    <p>Reflexión sobre las implicaciones morales y existenciales de la era nuclear.</p>
+                    <div class="work-links">
+                        <a href="https://www.amazon.es/s?k=jaspers+bomba+atomica" target="_blank">Amazon</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="influencias" class="section">
+            <h2 class="section-title">Influencias Recibidas y Ejercidas</h2>
+
+            <h3>Influencias Recibidas</h3>
+            <div class="influences-grid">
+                <div class="influence-card">
+                    <div class="influence-name">Søren Kierkegaard</div>
+                    <div class="influence-description">El precursor del existencialismo influyó profundamente en la concepción jasperiana de la existencia auténtica y las situaciones límite.</div>
+                </div>
+
+                <div class="influence-card">
+                    <div class="influence-name">Friedrich Nietzsche</div>
+                    <div class="influence-description">Su crítica radical de la cultura occidental y su énfasis en la creación de valores propios marcaron el pensamiento de Jaspers.</div>
+                </div>
+
+                <div class="influence-card">
+                    <div class="influence-name">Immanuel Kant</div>
+                    <div class="influence-description">La filosofía crítica kantiana, especialmente los límites del conocimiento y la razón práctica, fueron fundamentales para Jaspers.</div>
+                </div>
+
+                <div class="influence-card">
+                    <div class="influence-name">Max Weber</div>
+                    <div class="influence-description">Su sociología comprensiva y el concepto de "tipos ideales" influyeron en la metodología filosófica de Jaspers.</div>
+                </div>
+
+                <div class="influence-card">
+                    <div class="influence-name">Edmund Husserl</div>
+                    <div class="influence-description">La fenomenología husserliana proporcionó herramientas metodológicas para el análisis de la conciencia y la existencia.</div>
+                </div>
+
+                <div class="influence-card">
+                    <div class="influence-name">Wilhelm Dilthey</div>
+                    <div class="influence-description">Su distinción entre ciencias naturales y ciencias del espíritu influyó en la comprensión jasperiana de la existencia humana.</div>
+                </div>
+            </div>
+
+            <div class="quote-box">
+                <div class="quote-text">"Los grandes filósofos no son tanto maestros como compañeros de camino en la búsqueda de la verdad."</div>
+                <div class="quote-author">— Karl Jaspers</div>
+            </div>
+
+            <h3>Influencia Ejercida</h3>
+            <div class="influences-grid">
+                <div class="influence-card">
+                    <div class="influence-name">Hannah Arendt</div>
+                    <div class="influence-description">Su estudiante, quien desarrolló una filosofía política basada en conceptos jaspesianos de pluralidad y comunicación.</div>
+                </div>
+
+                <div class="influence-card">
+                    <div class="influence-name">Paul Ricoeur</div>
+                    <div class="influence-description">La hermenéutica de Ricoeur incorporó elementos de la filosofía de la comunicación y
